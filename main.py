@@ -140,3 +140,4 @@ async def run_query(input_data: QueryInput, token: HTTPAuthorizationCredentials 
         return {"answers": final_answers}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+   
