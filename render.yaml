@@ -3,15 +3,13 @@ services:
   - type: web
     name: hackrx-llm-api
     env: python
-    # CHANGE THIS LINE:
-    buildCommand: pip install faiss-cpu==1.8.0 --no-build-isolation --only-binary :all: && pip install -r requirements.txt
+    # **CHANGE THIS LINE to one of the options below:**
+    # Option A: Prioritize binaries for all, then install from requirements
+    buildCommand: pip install --no-build-isolation --only-binary :all: -r requirements.txt
+    # Option B: Install faiss-cpu first as binary, then the rest
+    # buildCommand: pip install faiss-cpu==1.8.0 --no-build-isolation --only-binary :all: && pip install -r requirements.txt
+    # Option C: Use pre-built sdist (sometimes helps) - less common
+    # buildCommand: pip install --no-deps --no-index --find-links=https://download.pytorch.org/whl/cpu faiss-cpu==1.8.0 && pip install -r requirements.txt
+
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /docs
-    envVars:
-      - key: GEMINI_API_KEY
-        sync: false
-      - key: TEAM_AUTH_TOKEN
-        sync: false
-    scaling:
-      minInstances: 0
-      maxInstances: 1
+    # ... rest of render.yaml
