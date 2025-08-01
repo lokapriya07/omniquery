@@ -30,14 +30,16 @@ docx2txt
 sentence-transformers
 google-generativeai
 beautifulsoup4
+
 fastapi==0.111.0
 uvicorn[standard]==0.29.0
 python-dotenv==1.0.0
 sentence-transformers==2.7.0
-faiss-cpu==1.8.0 # Crucial for Render's CPU-only environment
+faiss-cpu==1.8.0
 google-generativeai==0.6.0
-pymupdf==1.24.4 # For fitz
+pymupdf==1.24.4
 docx2txt==0.8
 requests==2.32.3
 html2text==2024.2.26
-pydantic==2.7.4 # Often installed with fastapi[all], but good to explicitly include if you use features not covered by the default FastAPI install.
+pydantic==2.7.4
+tokenizers==0.13.3  # <-- ADD OR CHANGE THIS LINE
