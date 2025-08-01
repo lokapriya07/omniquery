@@ -1,10 +1,17 @@
+# render.yaml
 services:
   - type: web
-    name: omniquery
+    name: hackrx-llm-api
     env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host=0.0.0.0 --port=10000
+    # CHANGE THIS LINE:
+    buildCommand: pip install faiss-cpu==1.8.0 --no-build-isolation --only-binary :all: && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /docs
     envVars:
-      - key: PORT
-        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: TEAM_AUTH_TOKEN
+        sync: false
+    scaling:
+      minInstances: 0
+      maxInstances: 1
