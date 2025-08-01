@@ -1,11 +1,32 @@
+# fastapi
+# uvicorn
+# python-multipart
+# requests
+# PyMuPDF
+# docx2txt
+# faiss-cpu
+# numpy
+# sentence-transformers
+# google-generativeai
+# python-dotenv
+# fastapi==0.111.0 # Or current version you are using
+# uvicorn[standard]==0.29.0 # Or current version
+# python-dotenv==1.0.0 # Or current version
+# sentence-transformers==2.7.0 # Or current version
+# faiss-cpu==1.8.0 # Use faiss-cpu for Render free tier (no GPU)
+# google-generativeai==0.6.0 # Or current version
+# pymupdf==1.24.4 # For PDF extraction (fitz)
+# docx2txt==0.8 # For DOCX extraction
+# requests==2.32.3 # For URL fetching
+# html2text==2024.2.26 # For HTML email parsing
+# # Other dependencies you might have, e.g., pydantic is usually installed with fastapi[all]
 fastapi
 uvicorn
-python-multipart
 requests
-PyMuPDF
-docx2txt
+python-dotenv
 faiss-cpu
-numpy
+pdfminer.six
+docx2txt
 sentence-transformers
 google-generativeai
-python-dotenv
+beautifulsoup4
