@@ -1,18 +1,12 @@
-# render.yaml
 services:
   - type: web
-    name: hackrx-llm-api # Choose a unique name for your service
-    env: python
+    name: fastapi-legal-gemini
+    runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /docs # Useful for Render to know your app is healthy
-    # Environment variables will be set securely in the Render dashboard
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
     envVars:
       - key: GEMINI_API_KEY
-        sync: false # Set as a secret on Render dashboard
+        sync: false
       - key: TEAM_AUTH_TOKEN
-        sync: false # Set as a secret on Render dashboard
-    # For free tier, scaling to 0 instances when idle to save resources
-    scaling:
-      minInstances: 0
-      maxInstances: 1
+        sync: false
+    plan: free
