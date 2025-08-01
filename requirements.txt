@@ -36,7 +36,7 @@ fastapi==0.111.0
 uvicorn[standard]==0.29.0
 python-dotenv==1.0.0
 sentence-transformers==2.7.0
-faiss-cpu==1.8.0 # Revert to this clean line
+faiss-cpu==1.11.0.post1 # CHANGED THIS LINE
 google-generativeai==0.6.0
 pymupdf==1.24.4
 docx2txt==0.8
