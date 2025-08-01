@@ -1,20 +1,18 @@
 # render.yaml
 services:
   - type: web
-    name: llm-query-api
+    name: hackrx-llm-api # Choose a unique name for your service
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /docs # Or /redoc, or a custom /health endpoint if you create one
+    healthCheckPath: /docs # Useful for Render to know your app is healthy
+    # Environment variables will be set securely in the Render dashboard
     envVars:
       - key: GEMINI_API_KEY
-        # You can set this as a secret environment variable directly in Render UI for security
-        # Or uncomment and set value here for quick testing (NOT RECOMMENDED for production)
-        # value: your_actual_gemini_api_key_here
+        sync: false # Set as a secret on Render dashboard
       - key: TEAM_AUTH_TOKEN
-        # Similarly, set as a secret in Render UI
-        # value: 379374d4fa56b09c028f61908d40ba07a8ee9c8d6242ef105013b8724cb82ba96
-    # Optional: Scaling to save resources
+        sync: false # Set as a secret on Render dashboard
+    # For free tier, scaling to 0 instances when idle to save resources
     scaling:
-      minInstances: 0 # Spin down after inactivity
-      maxInstances: 1 # Max instances for free tier
+      minInstances: 0
+      maxInstances: 1
