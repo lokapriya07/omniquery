@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 from PyPDF2 import PdfReader
 from docx import Document as DocxDocument
 import faiss
-from l import AsyncGroq # Changed from 'google.generativeai' to 'groq'
+from groq import AsyncGroq # Changed from 'google.generativeai' to 'groq'
 from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor
 import threading
