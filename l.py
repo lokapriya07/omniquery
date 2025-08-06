@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 from PyPDF2 import PdfReader
 from docx import Document as DocxDocument
 import faiss
-from groq import AsyncGroq # Changed from 'google.generativeai' to 'groq'
+from l import AsyncGroq # Changed from 'google.generativeai' to 'groq'
 from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor
 import threading
@@ -25,7 +25,7 @@ load_dotenv()
 
 # --- Key Changes for Groq API ---
 TEAM_AUTH_TOKEN = os.getenv("TEAM_AUTH_TOKEN")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") # Using GROQ_API_KEY from .env
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") # Using GROQ_API_KEY from .env-
 
 # Initialize the Asynchronous Groq Client
 # This client will be used to make non-blocking API calls.
